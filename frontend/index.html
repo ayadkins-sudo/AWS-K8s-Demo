@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AWS + Kubernetes Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      line-height: 1.5;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>AWS + Kubernetes Skills Demo</h1>
+  <div class="card">
+    <p>This app is running on a Kubernetes cluster in AWS.</p>
+    <p>Frontend: Nginx</p>
+    <p>Backend: Flask API</p>
+    <p>Kubernetes: K3s</p>
+    <p>Registry: Amazon ECR</p>
+    <button onclick="loadInfo()">Test API</button>
+    <pre id="output">Click the button to call /api/info</pre>
+  </div>
+
+  <script>
+    async function loadInfo() {
+      const res = await fetch('/api/info');
+      const data = await res.json();
+      document.getElementById('output').textContent =
+        JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
