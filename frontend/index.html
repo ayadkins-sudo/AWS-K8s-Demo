@@ -2,47 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AWS + Kubernetes Demo</title>
+  <title>AWS + Kubernetes Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 0 20px;
-      line-height: 1.5;
-    }
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-    }
-    code {
-      background: #f4f4f4;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>AWS + Kubernetes Skills Demo</h1>
-  <div class="card">
-    <p>This app is running on a Kubernetes cluster in AWS.</p>
-    <p>Frontend: Nginx</p>
-    <p>Backend: Flask API</p>
-    <p>Kubernetes: K3s</p>
-    <p>Registry: Amazon ECR</p>
-    <button onclick="loadInfo()">Test API</button>
-    <pre id="output">Click the button to call /api/info</pre>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>AWS + Kubernetes Deployment Portfolio</h1>
+      <p class="subtitle">
+        A live containerized application deployed on AWS using EC2, ECR, K3s, Kubernetes Deployments, Services, and Ingress.
+      </p>
+
+      <div class="buttons">
+        <a href="https://github.com/YOUR_USERNAME/AWS-K8s-Demo" target="_blank" class="btn">View GitHub</a>
+        <button onclick="checkAPI()" class="btn secondary">Live API Check</button>
+      </div>
+
+      <pre id="api-output">Click "Live API Check"</pre>
+    </section>
+
+    <!-- STATUS -->
+    <section class="section">
+      <h2>Live System Status</h2>
+      <div class="grid">
+        <div class="card"><span class="dot green"></span>K3s Cluster<br><small>Running</small></div>
+        <div class="card"><span class="dot green"></span>Frontend<br><small>Nginx container</small></div>
+        <div class="card"><span class="dot green"></span>Backend API<br><small>Flask service</small></div>
+        <div class="card"><span class="dot green"></span>Container Registry<br><small>Amazon ECR</small></div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section">
+      <h2>Architecture Overview</h2>
+      <div class="card mono">
+Browser
+  ↓
+Route 53 Domain
+  ↓
+EC2 Public Instance
+  ↓
+K3s + Traefik Ingress
+  ↓
+Frontend Service / Backend Service
+  ↓
+Pods (Docker containers from ECR)
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <h2>What This Project Demonstrates</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>AWS Infrastructure</strong><br>
+          EC2, ECR, Route 53, networking
+        </div>
+        <div class="card">
+          <strong>Kubernetes</strong><br>
+          Deployments, Services, Ingress, imagePullSecrets
+        </div>
+        <div class="card">
+          <strong>Containers</strong><br>
+          Docker, Buildx, amd64 builds
+        </div>
+        <div class="card">
+          <strong>Troubleshooting</strong><br>
+          Real-world debugging across stack layers
+        </div>
+      </div>
+    </section>
+
+    <!-- TROUBLESHOOTING -->
+    <section class="section">
+      <h2>Troubleshooting Wins</h2>
+
+      <div class="card">
+        <strong>Private ECR Pull Authentication</strong>
+        <p>Resolved 403 Forbidden and ImagePullBackOff errors by recreating Kubernetes image pull secrets and validating ECR authentication.</p>
+      </div>
+
+      <div class="card">
+        <strong>Cross Platform Container Builds</strong>
+        <p>Fixed platform mismatch from Apple Silicon by rebuilding linux/amd64 images using Docker Buildx.</p>
+      </div>
+
+      <div class="card">
+        <strong>Kubernetes Image Reference Issues</strong>
+        <p>Resolved InvalidImageName errors by correcting ECR image references in deployment manifests.</p>
+      </div>
+
+      <div class="card">
+        <strong>K3s Kubeconfig Permissions</strong>
+        <p>Resolved permission issues accessing cluster config by correctly handling K3s kubeconfig permissions.</p>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>Built and maintained by <strong>Abigail Adkins</strong></p>
+    </footer>
+
   </div>
 
-  <script>
-    async function loadInfo() {
-      const res = await fetch('/api/info');
-      const data = await res.json();
-      document.getElementById('output').textContent =
-        JSON.stringify(data, null, 2);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
