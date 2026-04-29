@@ -82,6 +82,11 @@ Pods (Docker containers from ECR)
       <h2>Troubleshooting Wins</h2>
 
       <div class="card">
+        <strong>Deployment Automation Workflow</strong>
+        <p>Created a repeatable deployment script that authenticates to AWS, rebuilds and pushes the frontend image to Amazon ECR, refreshes Kubernetes registry credentials, restarts the deployment, and verifies the live container content.</p>
+      </div>
+
+      <div class="card">
         <strong>HTTP to HTTPS Security Upgrade</strong>
         <p>Upgraded the live site from unsecured HTTP to HTTPS using Traefik and Let’s Encrypt, improving transport security and creating a more production-ready deployment.</p>
       </div>
